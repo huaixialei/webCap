@@ -1,4 +1,4 @@
-import dpkt
+from third_party.dpkt import dpkt
 
 
 def t():

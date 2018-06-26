@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-from bottle.bottle import  run
+from third_party.bottle.bottle import  run
 import routes.static
 
 run()

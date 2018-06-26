@@ -1,4 +1,4 @@
-from bottle.bottle import route, static_file
+from third_party.bottle.bottle import route, static_file
 import os
 
 root_path = os.path.abspath("static")
