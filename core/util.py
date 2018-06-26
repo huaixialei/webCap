@@ -1,8 +1,18 @@
 from tcpdump import Tcpdump
 import os, shutil
 
-pcap_path = os.path.abspath("tmp_pcap")
+tmp_root_path = os.path.abspath("tmp")
+pcap_path = tmp_root_path + "/pcap"
+json_path = tmp_root_path + "/json"
 tcpdump_map = {}
+
+def init_path():
+    if not os.path.exists(tmp_root_path):
+        os.mkdir(tmp_root_path)
+    if not os.path.exists(pcap_path):
+        os.mkdir(pcap_path)
+    if not os.path.exists(json_path):
+        os.mkdir(json_path)
 
 
 def generate_tcpdump(cmd, key):
@@ -17,10 +27,12 @@ def kill_tcpdump(key):
     return
 
 
-def rm_pcap(file_name):
-    if os.path.exists(file_name):
-        os.remove(file_name)
+def rm_pcap(pcap_name):
+    tmp_path = pcap_path + "/" + pcap_name
+    if os.path.exists(tmp_path):
+        os.remove(tmp_path)
 
 
 def rm_all_pcap():
-    shutil.rmtree(pcap_path)
+    for i in os.listdir(pcap_path):
+        rm_pcap(i)
