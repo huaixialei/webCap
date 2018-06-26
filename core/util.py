@@ -6,6 +6,7 @@ pcap_path = tmp_root_path + "/pcap"
 json_path = tmp_root_path + "/json"
 tcpdump_map = {}
 
+
 def init_path():
     if not os.path.exists(tmp_root_path):
         os.mkdir(tmp_root_path)
@@ -36,3 +37,14 @@ def rm_pcap(pcap_name):
 def rm_all_pcap():
     for i in os.listdir(pcap_path):
         rm_pcap(i)
+
+
+def rm_json(json_name):
+    tmp_path = json_path + "/" + json_name
+    if os.path.exists(tmp_path):
+        os.remove(tmp_path)
+
+
+def rm_all_json():
+    for i in os.listdir(json_path):
+        rm_json(i)
